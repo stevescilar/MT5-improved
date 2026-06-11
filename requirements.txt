@@ -1,0 +1,7 @@
+MetaTrader5
+pandas
+numpy
+python-telegram-bot
+scipy
+python-dotenv
+loguru
