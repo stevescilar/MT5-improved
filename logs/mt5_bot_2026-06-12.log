@@ -1,0 +1,102 @@
+2026-06-12 11:16:22.241 | INFO     | __main__:run:190 - Starting MT5 Improved bot
+2026-06-12 11:16:24.253 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 11:16:24.328 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
+2026-06-12 11:16:31.623 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:16:35.823 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:16:35.824 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:16:35.824 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:16:35.825 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:16:35.825 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:16:35.826 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:16:35.826 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:16:51.386 | INFO     | __main__:run:222 - Bot stopped by user
+2026-06-12 11:16:51.387 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
+2026-06-12 11:19:02.197 | INFO     | __main__:run:190 - Starting MT5 Improved bot
+2026-06-12 11:19:03.691 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 11:19:03.721 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
+2026-06-12 11:19:08.182 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:19:12.503 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:19:12.504 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:19:12.504 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:19:12.505 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:19:12.505 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:19:12.506 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:19:12.506 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:19:59.252 | INFO     | __main__:run:222 - Bot stopped by user
+2026-06-12 11:19:59.255 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
+2026-06-12 11:20:19.165 | INFO     | __main__:run:190 - Starting MT5 Improved bot
+2026-06-12 11:20:20.545 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 11:20:20.572 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
+2026-06-12 11:20:25.202 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:20:29.649 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:20:29.650 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:20:29.651 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:20:29.651 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:20:29.652 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:20:29.652 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:20:29.653 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:21:34.224 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:21:38.657 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:21:38.657 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:21:38.658 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:21:38.658 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:21:38.659 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:21:38.659 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:21:38.660 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:22:43.457 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:22:48.016 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:22:48.016 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:22:48.017 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:22:48.017 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:22:48.018 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:22:48.018 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:22:48.019 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:23:58.012 | DEBUG    | __main__:process_symbol:130 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:24:04.199 | DEBUG    | __main__:process_symbol:130 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:24:04.200 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:24:04.200 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:24:04.201 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:24:04.201 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:24:04.202 | WARNING  | broker.mt5_client:get_candles:61 - Symbol not found: GBPUSD
+2026-06-12 11:24:04.203 | WARNING  | __main__:process_symbol:118 - Skipping GBPUSD — missing candle data
+2026-06-12 11:24:34.382 | INFO     | __main__:run:222 - Bot stopped by user
+2026-06-12 11:24:34.387 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
+2026-06-12 11:24:40.967 | INFO     | __main__:run:195 - Starting MT5 Improved bot
+2026-06-12 11:24:42.330 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 11:24:42.354 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
+2026-06-12 11:24:46.663 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:24:51.070 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:24:55.632 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:26:03.511 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:26:09.164 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:26:14.672 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:27:20.223 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:27:25.002 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:27:29.794 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:28:35.668 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:28:40.915 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:28:46.272 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:29:50.904 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:29:55.689 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:30:00.643 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:31:05.686 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:31:10.875 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:31:15.300 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:32:19.956 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:32:24.438 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:32:28.942 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:33:34.348 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:33:39.289 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:33:43.810 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:34:52.497 | DEBUG    | __main__:process_symbol:135 - XAUUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:34:56.838 | DEBUG    | __main__:process_symbol:135 - EURUSDm | dir=None rr=None valid=False checks={'h4_bias': False, 'h1_structure': False, 'bias_matches_structure': False, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:35:01.295 | DEBUG    | __main__:process_symbol:135 - GBPUSDm | dir=SELL rr=None valid=False checks={'h4_bias': True, 'h1_structure': True, 'bias_matches_structure': True, 'm15_setup': False, 'm5_entry': False, 'm1_refinement': False, 'risk_reward': False}
+2026-06-12 11:35:19.772 | INFO     | __main__:run:227 - Bot stopped by user
+2026-06-12 11:35:19.773 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
+2026-06-12 11:35:24.637 | INFO     | __main__:run:238 - Starting MT5 Improved bot
+2026-06-12 11:35:24.638 | INFO     | __main__:run:239 - Session filter: 12:00–21:00 UTC  (15 EAT – 24 EAT)
+2026-06-12 11:35:25.960 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 11:35:25.988 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
+2026-06-12 11:35:25.988 | INFO     | __main__:run:273 - Outside trading session (08:00 UTC / 11:00 EAT) — waiting…
+2026-06-12 11:39:20.570 | INFO     | __main__:run:295 - Bot stopped by user
+2026-06-12 11:39:20.573 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
