@@ -100,3 +100,7 @@
 2026-06-12 11:35:25.988 | INFO     | __main__:run:273 - Outside trading session (08:00 UTC / 11:00 EAT) — waiting…
 2026-06-12 11:39:20.570 | INFO     | __main__:run:295 - Bot stopped by user
 2026-06-12 11:39:20.573 | INFO     | broker.mt5_client:shutdown:43 - MT5 disconnected
+2026-06-12 14:23:43.270 | INFO     | __main__:run:238 - Starting MT5 Improved bot
+2026-06-12 14:23:43.272 | INFO     | __main__:run:239 - Session filter: 00:00–00:00 UTC  (3 EAT – 3 EAT)
+2026-06-12 14:23:44.611 | INFO     | notifications.telegram_bot:__init__:26 - Telegram notifier enabled (chat_id=7821580077)
+2026-06-12 14:23:44.664 | INFO     | broker.mt5_client:connect:28 - MT5 connected (login=436317515, server=ExnessKE-MT5Trial9)
