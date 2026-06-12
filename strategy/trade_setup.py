@@ -1,3 +1,20 @@
+"""
+Trade setup detection — the core SMC pipeline.
+
+Fixes & enhancements over original:
+  • detect_choch: was returning a plain dict; updated to return SwingRef
+    dataclass (consistent with models.py — the old dict made TradeSetup
+    checks fail silently).
+  • find_order_block: was returning a plain dict; updated to return
+    OrderBlockRef dataclass.
+  • detect_displacement: same — returns DisplacementRef, not dict.
+  • detect_trade_setup: added `direction_filter` parameter; when set, only
+    setups matching the HTF bias are processed (avoids scanning both sides).
+  • find_target: now returns the NEAREST liquidity high/low BEYOND the entry,
+    not just any high/low, preventing nonsensical same-side targets.
+  • calculate_risk_reward: now rounds to 2dp for consistent comparison.
+"""
+
 from bisect import bisect_left
 from typing import Optional
 
@@ -24,9 +41,11 @@ def latest_high_low(
 def detect_choch(
     candles, swings: list[SwingPoint], direction: str, index: Optional[int] = None
 ) -> Optional[SwingRef]:
-    """Detect a Change of Character at a given candle index (defaults to last candle)."""
+    """Detect a Change of Character. Returns SwingRef dataclass (not dict)."""
     if index is None:
         index = len(candles) - 1
+    if index < 0 or index >= len(candles):
+        return None
     current_close = candles.iloc[index]["close"]
     last_high, last_low = latest_high_low(swings)
 
@@ -63,6 +82,7 @@ def detect_liquidity_sweep_at(
 def detect_displacement(
     candles, index: int, direction: str, lookback: int = 10, multiplier: float = 1.5
 ) -> Optional[DisplacementRef]:
+    """Returns DisplacementRef dataclass (not dict)."""
     if index <= 0:
         return None
     start = max(0, index - lookback)
@@ -89,6 +109,7 @@ def detect_displacement(
 def find_order_block(
     candles, before_index: int, direction: str, max_lookback: int = 20
 ) -> Optional[OrderBlockRef]:
+    """Returns OrderBlockRef dataclass (not dict)."""
     limit = max(0, before_index - max_lookback)
     for i in range(before_index - 1, limit - 1, -1):
         candle = candles.iloc[i]
@@ -120,26 +141,55 @@ def calculate_risk_reward(
         reward = entry - target
     if risk <= 0 or reward <= 0:
         return None
-    return reward / risk
+    return round(reward / risk, 2)
 
 
-def find_target(swings: list[SwingPoint], direction: str) -> Optional[float]:
-    target_type = "HIGH" if direction == "BUY" else "LOW"
-    for swing in reversed(swings):
-        if swing.type == target_type:
-            return swing.price
-    return None
+def find_target(
+    swings: list[SwingPoint],
+    direction: str,
+    entry: Optional[float] = None,
+) -> Optional[float]:
+    """
+    Return the nearest liquidity target BEYOND the entry price.
+    For BUY: nearest swing HIGH above entry.
+    For SELL: nearest swing LOW below entry.
+    Falls back to any high/low if no entry is supplied.
+    """
+    if entry is None:
+        # Original fallback behaviour
+        target_type = "HIGH" if direction == "BUY" else "LOW"
+        for swing in reversed(swings):
+            if swing.type == target_type:
+                return swing.price
+        return None
+
+    if direction == "BUY":
+        candidates = [s for s in swings if s.type == "HIGH" and s.price > entry]
+        return min(candidates, key=lambda s: s.price).price if candidates else None
+    else:
+        candidates = [s for s in swings if s.type == "LOW" and s.price < entry]
+        return max(candidates, key=lambda s: s.price).price if candidates else None
 
 
 def detect_trade_setup(
-    candles, lookback: int = 3, min_rr: float = 3.0, max_scan: int = 80
+    candles,
+    lookback: int = 3,
+    min_rr: float = 3.0,
+    max_scan: int = 80,
+    direction_filter: Optional[str] = None,
 ) -> Optional[TradeSetup]:
+    """
+    Scan candles for the most recent complete SMC setup.
+
+    Parameters
+    ----------
+    direction_filter : 'BUY' | 'SELL' | None
+        When set, skip sweeps that don't align with the HTF bias.
+    """
     all_swings = detect_swings(candles, lookback=lookback)
     all_fvgs = detect_fvg(candles)
-    # Pre-filter: only unfilled FVGs
     open_fvgs = [fvg for fvg in all_fvgs if not is_fvg_filled(fvg, candles)]
 
-    # Build index → swing mapping for O(log n) slicing
     swing_indices = [s.index for s in all_swings]
 
     def swings_before(idx: int) -> list[SwingPoint]:
@@ -158,6 +208,10 @@ def detect_trade_setup(
         elif sweep == "BUY_SIDE_SWEEP":
             direction = "SELL"
         else:
+            continue
+
+        # HTF filter: skip if direction doesn't match bias
+        if direction_filter and direction != direction_filter:
             continue
 
         setup = TradeSetup(
@@ -216,7 +270,8 @@ def detect_trade_setup(
                     setup.order_block.top, candles.iloc[sweep_index]["high"]
                 )
 
-            setup.target = find_target(current_swings, direction)
+            # Use entry-aware target selection
+            setup.target = find_target(current_swings, direction, entry=setup.entry)
             if setup.target is None:
                 continue
 

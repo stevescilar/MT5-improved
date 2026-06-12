@@ -73,25 +73,20 @@ def in_trading_session() -> bool:
     Defaults to New York session: 12:00–21:00 UTC
     (= 15:00–00:00 EAT, capturing NY open + London/NY overlap)
 
-    Override via .env:
-        SESSION_START_UTC=12   # hour, 0-23
-        SESSION_END_UTC=21     # hour, 0-23 (exclusive)
-
-    Set both to 0 to disable the filter and trade 24/5.
+    Set both SESSION_START_UTC and SESSION_END_UTC to 0 to trade 24/5.
     """
     start = config.SESSION_START_UTC
     end = config.SESSION_END_UTC
 
-    # Both zero → filter disabled, always trade
     if start == 0 and end == 0:
         return True
 
     now_hour = _now_utc().hour
 
-    # Handle windows that cross midnight e.g. 22:00–02:00
     if start < end:
         return start <= now_hour < end
     else:
+        # Window crosses midnight e.g. 22:00–02:00
         return now_hour >= start or now_hour < end
 
 
@@ -117,7 +112,7 @@ TF_DRILL_DOWN = {
     "M15": (
         mt5.TIMEFRAME_M15,
         mt5.TIMEFRAME_M5,
-        mt5.TIMEFRAME_M5,
+        mt5.TIMEFRAME_M5,  # NOTE: kept same as original; consider M3 if available
         mt5.TIMEFRAME_M1,
         mt5.TIMEFRAME_M1,
     ),
@@ -184,6 +179,17 @@ def process_symbol(
         result["checks"],
     )
 
+    if result["debug"]:
+        logger.debug(
+            "{} | h4_struct={} h1_struct={} h1_bos={} swings(h4={} h1={})",
+            symbol,
+            result["debug"].get("h4_structure"),
+            result["debug"].get("h1_structure"),
+            result["debug"].get("h1_bos"),
+            result["debug"].get("h4_swing_count"),
+            result["debug"].get("h1_swing_count"),
+        )
+
     if not result["valid"]:
         return
 
@@ -192,7 +198,9 @@ def process_symbol(
     rr = result["risk_reward"]
 
     if not risk.can_trade(symbol):
-        logger.info("{} | Trade skipped — position already open", symbol)
+        logger.info(
+            "{} | Trade skipped — position already open or drawdown limit hit", symbol
+        )
         return
 
     lot = risk.lot_size(symbol, levels["entry"], levels["stop"])
@@ -245,7 +253,10 @@ def run() -> None:
     )
 
     client = MT5Client()
-    risk = RiskManager(risk_pct=config.RISK_PCT)
+    risk = RiskManager(
+        risk_pct=config.RISK_PCT,
+        max_daily_drawdown_pct=config.MAX_DAILY_DRAWDOWN_PCT,
+    )
     notifier = TelegramNotifier(config.TELEGRAM_TOKEN, config.TELEGRAM_CHAT_ID)
     timeframes = get_timeframes()
 
@@ -253,10 +264,28 @@ def run() -> None:
 
     daily_trade_count = 0
     last_summary_date = _today_utc()
-    last_session_log = None  # avoid spamming "outside session" every minute
+    last_session_log = None
+
+    # ── Connection watchdog ──────────────────────────────────────────
+    _reconnect_backoff = 60
 
     try:
         while True:
+            # ── Connection health check ─────────────────────────────
+            if not client.is_connected():
+                logger.warning("MT5 connection lost — reconnecting…")
+                try:
+                    client.reconnect()
+                    _reconnect_backoff = 60
+                except Exception as exc:
+                    logger.error(
+                        "Reconnect failed: {}  retrying in {}s", exc, _reconnect_backoff
+                    )
+                    notifier.error("reconnect", exc)
+                    time.sleep(_reconnect_backoff)
+                    _reconnect_backoff = min(_reconnect_backoff * 2, 600)
+                    continue
+
             # ── Daily summary rollover ──────────────────────────────
             today = _today_utc()
             if today != last_summary_date:
@@ -265,6 +294,7 @@ def run() -> None:
                     notifier.daily_summary(info.balance, info.equity, daily_trade_count)
                 daily_trade_count = 0
                 last_summary_date = today
+                risk.reset_daily_balance()
 
             # ── Session gate ────────────────────────────────────────
             if not in_trading_session():
@@ -279,7 +309,7 @@ def run() -> None:
                 time.sleep(60)
                 continue
 
-            last_session_log = None  # reset so we log again when next gap occurs
+            last_session_log = None
 
             # ── Symbol scan ─────────────────────────────────────────
             for symbol in config.SYMBOLS:
